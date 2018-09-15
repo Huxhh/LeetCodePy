@@ -30,6 +30,7 @@ def twoSum3(nums, target):
             return [d[x], i]
         d[nums[i]] = i
 
+
 if __name__ == '__main__':
     outnums = [3, 2, 4]
     outtarget = 6
