@@ -34,6 +34,7 @@ def generateParenthesis2(n):
     return res
 
 
-if __name__ == "__main":
-    # s = solution()
-    print(generateParenthesis2(2))
+if __name__ == '__main__':
+    s = solution()
+    # print(generateParenthesis2(3))
+    print(s.generateParenthesis(3))
