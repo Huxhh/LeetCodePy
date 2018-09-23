@@ -38,5 +38,21 @@ def countAndSay(n):
     return ret
 
 
+def countAndSay2(s, depth, n):
+    if depth == n:
+        return s
+    ans = ""
+    x = 1
+    for i in range(0, len(s)):
+        if s[i] == s[i + 1]:
+            x += 1
+        else:
+            ans = ans + str(x) + str[i]
+            x = 1
+
+    return countAndSay2(ans, depth + 1, n)
+
+
+
 if __name__ == '__main__':
-    print(countAndSay(1))
+    print(countAndSay2("1", 1, 2))
