@@ -43,16 +43,18 @@ def countAndSay2(s, depth, n):
         return s
     ans = ""
     x = 1
-    for i in range(0, len(s)):
+    s += "A"
+    for i in range(0, len(s) - 1):
         if s[i] == s[i + 1]:
             x += 1
         else:
-            ans = ans + str(x) + str[i]
+            ans = ans + str(x) + s[i]
             x = 1
+    if x != 1:
+        ans = ans + str(x) + str[-1]
 
     return countAndSay2(ans, depth + 1, n)
 
 
-
 if __name__ == '__main__':
-    print(countAndSay2("1", 1, 2))
+    print(countAndSay2("1", 1, 5))
