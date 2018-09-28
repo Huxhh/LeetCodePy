@@ -1,6 +1,14 @@
 # coding=utf-8
 
 
+"""
+思路：
+获取needle的长度，如果长度为0，即needle为空串，返回0
+以needle的长度遍历haystack，出现相同时即返回下标
+时间复杂度 O(n) 空间复杂度 O(1)
+"""
+
+
 def strStr(haystack, needle):
     if len(needle) == 0:
         return 0

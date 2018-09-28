@@ -1,6 +1,14 @@
 # coding=utf-8
 
 
+"""
+思路
+首先找到所有字符串中长度最短的一个，将它用enumerate表示，即字符下标与字符一一对应
+遍历其他字符串，每个字符与enumera中的字符比较，出现不同时返回下标得到结果
+时间复杂度 O(m*n) 空间复杂度O(n)
+"""
+
+
 def longestCommonPrefix(strs):
     res = ""
     if len(strs) == 0:
@@ -35,8 +43,6 @@ def longestCommonPrefix2(strs):
     if not strs:
         return ""
     minlen = min(strs, key=len)
-    print(minlen)
-    print(list(enumerate(minlen)))
     for i, ss in enumerate(minlen):
         for other in strs:
             if other[i] != ss:
