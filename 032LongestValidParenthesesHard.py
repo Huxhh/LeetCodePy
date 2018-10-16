@@ -68,6 +68,25 @@ def longestValidParentheses3(s):
     return maxlen
 
 
+def longestValidParentheses_dp(s):
+    dp = [0] * len(s)
+    longest = 0
+    for i in range(1, len(s)):
+        if s[i] == ')':
+            if s[i - 1] == '(':
+                if i > 2:
+                    dp[i] = dp[i - 2] + 2
+                else:
+                    dp[i] += 2
+            elif i - dp[i - 1] > 0 and s[i - dp[i - 1] - 1] == '(':
+                if i - dp[i - 1] >= 2:
+                    dp[i] = dp[i - 1] + dp[i - dp[i - 1] - 2] + 2
+                else:
+                    dp[i] = dp[i - 1] + 2
+        longest = max(longest, dp[i])
+    return longest
+
+
 if __name__ == '__main__':
-    s = ")))"
-    print(longestValidParentheses3(s))
+    s = "()())"
+    print(longestValidParentheses_dp(s))
