@@ -3,22 +3,28 @@
 def addBinary(a, b):
     n = len(a)
     m = len(b)
-    ans = ""
     if n < m:
         a, b, m, n = b, a, n, m
 
-    c = 0
-    for i in range(m - 1, -1, -1):
-        a[i] = chr(int(a[i]) + int(b[i]) + c)
-        if int(a[i]) > 2:
-            c = 1
+    l = []
+    for x in a:
+        l.append(x)
+    for i in range(n - 1, n - m - 1, -1):
+        l[i] = str(int(a[i]) + int(b[i - n + m]))
+
     c = 0
     for i in range(n - 1, -1, -1):
-        c = int(a[i]) // 2
-        a[i] = chr((int(a[i]) + c) % 2)
+        tmp = int(l[i]) + c
+        l[i] = str((int(l[i]) + c) % 2)
+        c = tmp // 2
 
+    ext = ""
+    while c > 0:
+        ext = str(c % 2) + ext
+        c //= 2
 
+    return ext + ''.join(l)
 
 
 if __name__ == '__main__':
-    print(addBinary("110", "11"))
+    print(addBinary("1010", "1011"))
