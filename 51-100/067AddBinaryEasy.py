@@ -1,5 +1,10 @@
 # coding=utf-8
 
+"""
+思路
+思路比较常规，注意第二种方法的技巧即可
+"""
+
 def addBinary(a, b):
     n = len(a)
     m = len(b)
@@ -26,5 +31,22 @@ def addBinary(a, b):
     return ext + ''.join(l)
 
 
+def addBinary2(a, b):
+    m = len(a) - 1
+    n = len(b) - 1
+    c = 0
+    ans = ""
+    while m >= 0 or n >= 0 or c > 0:
+        if m >= 0:
+            c += int(a[m])
+            m -= 1
+        if n >= 0:
+            c += int(b[n])
+            n -= 1
+        ans = str(c % 2) + ans
+        c //= 2
+    return ans
+
+
 if __name__ == '__main__':
-    print(addBinary("1010", "1011"))
+    print(addBinary2("11", "1"))
