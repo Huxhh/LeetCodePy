@@ -1,4 +1,5 @@
 # coding=utf-8
+import functools
 
 def maxEnvelopes(envelopes):
     if not envelopes:
@@ -21,9 +22,8 @@ class Solution(object):
         if not envelopes:
             return 0
         dp = []
-        # sorted(envelopes, key=lambda x, y: True if x[0] == y[0] and x[1] > y[1] else False)
-        # sorted(envelopes, key=self.comp)
-        sorted(envelopes, key=lambda x, y: self.comp(x, y))
+        envelopes = sorted(envelopes, key=functools.cmp_to_key(self.comp))
+        print(envelopes)
         for i in range(len(envelopes)):
             left = 0
             right = len(dp)
@@ -44,9 +44,15 @@ class Solution(object):
 
     def comp(self, x, y):
         if x[0] == y[0]:
-            return x[1] > y[1]
+            if x[1] > y[1]:
+                return -1
+            else:
+                return 1
         else:
-            return x[0] < y[0]
+            if x[0] < y[0]:
+                return -1
+            else:
+                return 1
 
 
 if __name__ == '__main__':
