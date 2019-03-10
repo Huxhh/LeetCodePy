@@ -23,7 +23,6 @@ class Solution(object):
             return 0
         dp = []
         envelopes = sorted(envelopes, key=functools.cmp_to_key(self.comp))
-        print(envelopes)
         for i in range(len(envelopes)):
             left = 0
             right = len(dp)
