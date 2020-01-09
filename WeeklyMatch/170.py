@@ -72,6 +72,15 @@ def watchedVideosByFriends(watchedVideos, friends, id, level):
     ans = list(videos.keys())
     ans.sort(key=lambda x: [videos[x], x])
 
+    from collections import Counter
+    cv = []
+    for t in target:
+        cv += watchedVideos[t]
+
+    c = Counter(cv)
+    ss = sorted(c.items())
+    print('ss',ss)
+
     return ans
 
 
