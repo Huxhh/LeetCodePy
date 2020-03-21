@@ -24,3 +24,23 @@ class Solution(object):
                 break
         return root
 
+
+# O(N) O(N)   *****
+def buildTree2(preorder, inorder):
+    if not preorder or not inorder:
+        return
+
+    root = TreeNode(preorder[0])
+    s = [root]
+    inorderindex = 0
+    for i in range(1, len(preorder)):
+        if s[-1].val != inorder[inorderindex]:
+            s[-1].left = TreeNode(preorder[i])
+            s.append(s[-1].left)
+        else:
+            while s and s[-1].val == inorder[inorderindex]:
+                node = s.pop()
+                inorderindex += 1
+            node.right = TreeNode(preorder[i])
+            s.append(node.right)
+    return root
