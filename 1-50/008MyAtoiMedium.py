@@ -51,6 +51,26 @@ def myAtoi(str):
         return 0
 
 
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        s = s.strip(' ')
+        if not s:
+            return 0
+
+        sign = 1
+        if s[0] in ['-', '+']:
+            if s[0] == '-':
+                sign = -1
+            s = s[1:]
+
+        p, res = 0, 0
+        while p < len(s) and s[p].isnumeric():
+            res = res * 10 + int(s[p])
+            p += 1
+
+        return max(-(2**31), min(2**31-1, sign * res))
+
+
 if __name__ == '__main__':
     s = "-42"
     print(myAtoi(s))

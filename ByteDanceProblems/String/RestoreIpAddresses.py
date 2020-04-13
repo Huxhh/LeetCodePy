@@ -44,6 +44,6 @@ class Solution:
 
 
 if __name__ == '__main__':
-    s1 = '25525511135'
+    s1 = '25525519935'
     s = Solution()
     print(s.restoreIpAddresses(s1))
