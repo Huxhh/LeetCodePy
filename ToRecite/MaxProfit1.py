@@ -15,7 +15,7 @@ class Solution(object):
         return res
 
 
-class Solution(object):
+class Solution2(object):
     def maxProfit(self, prices):
         """
         :type prices: List[int]

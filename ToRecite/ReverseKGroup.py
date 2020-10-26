@@ -22,11 +22,9 @@ class Solution(object):
 
         while end:
             for i in range(k):
-                if not end:
-                    break
                 end = end.next
-            if not end:
-                break
+                if not end:
+                    return dummy.next
             start = pre.next
             after = end.next
             end.next = None
