@@ -24,6 +24,6 @@ def combinationSum2(candidates, target):
 
 
 if __name__ == '__main__':
-    candidates = [10,1,2,7,6,1,5]
-    target = 8
+    candidates = [1,2,2,2,3,3,4,4]
+    target = 5
     print(combinationSum2(candidates, target))

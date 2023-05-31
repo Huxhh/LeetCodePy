@@ -22,7 +22,7 @@ def findRepeatNumber2(nums):
             nums[nums[i]], nums[i] = nums[i], nums[nums[i]]
 
 
-# 时间O(N) 空间O(1)
+# 时间O(N) 空间O(N)
 def findRepeatNumber3(nums):
     s = set()
     for n in nums:
