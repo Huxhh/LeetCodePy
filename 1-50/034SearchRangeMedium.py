@@ -32,6 +32,53 @@ def searchRange(nums, target):
     return ans
 
 
+"""
+三种二分写法，注意循环不变量
+找右边界时可以看做是找大于等于target+1的数，然后最后减1就得到了target的结尾
+"""
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        def lower_bound(nums, target):
+            left = 0
+            right = len(nums) - 1
+            while left <= right:
+                mid = (left + right) // 2
+                if nums[mid] < target:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+            return left
+
+        def lower_bound2(nums, target):
+            left = 0
+            right = len(nums)
+            while left < right:
+                mid = (left + right) // 2
+                if nums[mid] < target:
+                    left = mid + 1
+                else:
+                    right = mid
+            return left
+
+        def lower_bound3(nums, target):
+            left = -1
+            right = len(nums)
+            while left + 1 < right:
+                mid = (left + right) // 2
+                if nums[mid] < target:
+                    left = mid
+                else:
+                    right = mid
+            return right
+
+        start = lower_bound(nums, target)
+        print(start)
+        if start == len(nums) or nums[start] != target:
+            return [-1, -1]
+        end = lower_bound3(nums, target + 1) - 1
+        return [start, end]
+
+
 if __name__ == '__main__':
     nums = [1]
     target = 1
